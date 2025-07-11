@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+/htmlcov/
+.tox/
+.coverage
+.coverage.*
+.hypothesis/
+.pytest_cache/
+cover/
+*.csv
+*.pkl
+
+# Distribution and packaging
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+sdist/
+.env/
+.venv/
+lib/
+lib64/
+include/
+share/
+bin/
+parts/
+var/
+pip-log.txt
+pip-delete-this-arg.txt
+
+# Editors
+.vscode/        # VS Code
+.idea/          # IntelliJ IDEA / PyCharm
+*.sublime-project # Sublime Text
+*.sublime-workspace
+.DS_Store       # macOS
+Thumbs.db       # Windows
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# Common deep learning frameworks/libraries outputs
+*.h5            # Keras models
+*.keras         # Keras models (new format)
+*.pb            # TensorFlow Protocol Buffer (GraphDef)
+*.tflite        # TensorFlow Lite models
+*.onnx          # ONNX models
+*.pth           # PyTorch models
+*.pt            # PyTorch models (alternative extension)
+*.ckpt          # TensorFlow checkpoints
+*.index         # TensorFlow checkpoints
+*.data-* # TensorFlow checkpoints
+events.out.tfevents.* # TensorBoard logs
+
+# Experiment tracking
+wandb/          # Weights & Biases
+mlruns/         # MLflow
+.neptune/       # Neptune.ai
+
+# Jupyter and other IDE outputs that are not strictly necessary to commit
+*.bak
+*.orig
+*.swp
+*.swo
+
+# Misc
+*.log
+*.sqlite3
+*.db
+!__init__.py
