@@ -1,4 +1,5 @@
 from collections import Counter
+import random
 import numpy as np
 
 # def most_common_integer(lst):
@@ -32,4 +33,10 @@ def minmax(data: list[list[int]]) -> list[list[float]]:
     scaled_np_data = (np_data - actual_min) / (actual_max - actual_min)
     return scaled_np_data.tolist()
 
-    
+def split_list(data, ratio):
+    shuffled = data[:]
+    random.shuffle(shuffled)
+    i = int(len(shuffled) * ratio)
+    splited = shuffled[:i]
+    remain = shuffled[i:]
+    return splited, remain

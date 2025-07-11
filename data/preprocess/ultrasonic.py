@@ -1,4 +1,4 @@
-from utils.preprocess import get_lbl, minmax
+from utils.preprocess import get_lbl, minmax, split_list
 import pandas as pd
 import pickle
 
@@ -14,6 +14,7 @@ labeled_df = pd.read_csv("./labeled/out.csv")
 
 WINDOW_SIZE = 50
 STEPS = 25
+TEST_RATIO = 0.2
 
 out_dict = {
 }
@@ -32,12 +33,27 @@ for start in range(0, idx_last, STEPS) :
     if lbl not in list(out_dict.keys()) :
         out_dict[lbl] = []
         
-    sdata = minmax(sdata)    
+    sdata = minmax(sdata)
     out_dict[lbl].append(sdata)
-    
-    
-print("\n=== Output Data Length ===")
+
+test_dict = {
+}
+
+train_dict = {
+}
+
+
 for k in sorted(list(out_dict.keys())) :
     windows_len = len(out_dict[k])
     print(f"Label {k} windows : {windows_len} , data length : {windows_len*WINDOW_SIZE*4}")
+    test_data, train_data = split_list(out_dict[k], TEST_RATIO)
+    test_dict[k] = test_data
+    train_dict[k] = train_data
     
+with open("../dataset/ultrasonic/train/train.pkl", "wb") as f :
+    pickle.dump(train_dict, f)
+    
+with open("../dataset/ultrasonic/test/test.pkl", "wb") as f :
+    pickle.dump(test_dict, f)
+    
+# dict {0 : [[[s1 ...], [s2 ...], [s3 ...], [s4 ...]] , [[s1 ...] [s2 ...], [s3 ...], [s4 ...]] ... ] }
