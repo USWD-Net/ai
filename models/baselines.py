@@ -65,3 +65,4 @@ class LSTM(nn.Module):
         out = self.dropout(hn[-1])
         out = self.fc(out)
         return out
+    

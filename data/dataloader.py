@@ -47,8 +47,6 @@ class USWDDataset(Dataset) :
         return len(self.data)
         
 
-# rfft 하면 - 51?
-
 def get_dataloader(data_root) :
     train_dataset = USWDDataset(os.path.join(data_root, "train.pkl"), is_sample=True)
     val_dataset = USWDDataset(os.path.join(data_root, "val.pkl"), is_sample=True)
