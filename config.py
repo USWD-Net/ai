@@ -1,0 +1,8 @@
+# params
+SEED = 42
+NUM_WORKERS = 4
+BATCH_SIZE = 32
+
+# data
+WINDOW_SIZE = 100
+NUM_CLASSES = 10
