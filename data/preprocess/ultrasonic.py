@@ -10,7 +10,7 @@ import pickle
 # 전처리하면 2배 -> 하루에 700만개 데이터
 # label 0인것 중에서는 몇개만 extract 해서 사용
 
-labeled_df = pd.read_csv("./labeled/out.csv")
+labeled_df = pd.read_csv("./ultrasonic/labeled/merged_labeled.csv")
 
 WINDOW_SIZE = 100
 STEPS = 50
