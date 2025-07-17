@@ -76,7 +76,7 @@ class USWDSignalTransformerEncoder(nn.Module) :
         self.te = TrasnformerEncoder(d_model = d_model,
                                      nhead = N_HEAD,
                                      num_layers = NUM_LAYERS,
-                                     dropout = DROPOUT)
+                                     dropout = DROPOUT_TR)
         
     def forward(self, x) :
         x = x.unsqueeze(dim=1)
@@ -216,3 +216,4 @@ class USWDNet_Uni(nn.Module) :
         w_sum = torch.sum(w_embs, dim = 1) # [B, 256]
         out = self.cls_header(w_sum)
         return out # [B, N_CLS]
+    

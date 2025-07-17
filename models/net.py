@@ -57,7 +57,6 @@ class TrasnformerEncoder(nn.Module) :
         self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
         
     def forward(self, x) :
-        # x [B, d_model. w]
         x = x.permute(0, 2, 1)
         x = self.pe(x)
         out = self.transformer_encoder(x)

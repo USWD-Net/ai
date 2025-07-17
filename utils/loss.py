@@ -1,5 +1,7 @@
 import torch
+import torch.nn as nn
 import torch.nn.functional as F
+from config import LOSS
 
 class FocalLoss(torch.nn.Module):
     def __init__(self, gamma=2.0, alpha=None, reduction='mean'):
@@ -23,3 +25,9 @@ class FocalLoss(torch.nn.Module):
             return focal_loss.sum()
         else:
             return focal_loss
+
+def get_loss() :
+    if LOSS == "focal" :
+        return FocalLoss()
+    else :
+        return nn.CrossEntropyLoss()

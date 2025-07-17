@@ -46,12 +46,19 @@ class USWDDataset(Dataset) :
     def __len__(self) :
         return len(self.data)
         
+def get_dataloader(data_root, is_val = False) :
+    if is_val :
+        dataset = USWDDataset(os.path.join(data_root, "val.pkl"), is_sample=True)
+    else :
+        dataset = USWDDataset(os.path.join(data_root, "train.pkl"), is_sample=True)
+    return DataLoader(dataset, batch_size = BATCH_SIZE, num_workers = NUM_WORKERS, shuffle = True)
 
-def get_dataloader(data_root) :
-    train_dataset = USWDDataset(os.path.join(data_root, "train.pkl"), is_sample=True)
-    val_dataset = USWDDataset(os.path.join(data_root, "val.pkl"), is_sample=True)
-    test_dataset = USWDDataset(os.path.join(data_root, "test.pkl"), is_sample=True)
-    train_dataloader = DataLoader(train_dataset, batch_size = BATCH_SIZE, num_workers = NUM_WORKERS, shuffle = True)
-    val_dataloader = DataLoader(val_dataset, batch_size = BATCH_SIZE, num_workers = NUM_WORKERS, shuffle = True)
-    test_dataloader = DataLoader(test_dataset, batch_size = BATCH_SIZE, num_workers = NUM_WORKERS, shuffle = True)
-    return train_dataloader, val_dataloader, test_dataloader
+
+# def get_dataloader(data_root) :
+#     train_dataset = USWDDataset(os.path.join(data_root, "train.pkl"), is_sample=True)
+#     val_dataset = USWDDataset(os.path.join(data_root, "val.pkl"), is_sample=True)
+#     test_dataset = USWDDataset(os.path.join(data_root, "test.pkl"), is_sample=True)
+#     train_dataloader = DataLoader(train_dataset, batch_size = BATCH_SIZE, num_workers = NUM_WORKERS, shuffle = True)
+#     val_dataloader = DataLoader(val_dataset, batch_size = BATCH_SIZE, num_workers = NUM_WORKERS, shuffle = True)
+#     test_dataloader = DataLoader(test_dataset, batch_size = BATCH_SIZE, num_workers = NUM_WORKERS, shuffle = True)
+#     return train_dataloader, val_dataloader, test_dataloader
